@@ -1,0 +1,22 @@
+chunking:
+  system: "You take a document and split it into overlapping chunks for a KnowledgeBase."
+  template: |
+    The document is of type: {doc_type}
+    The document source: {source}
+
+    A chatbot will use these chunks to answer questions about Insurellm.
+    Split into at least {how_many} chunks with ~25% overlap (~50 words).
+
+    Here is the document:
+    {page_content}
+
+    Respond with valid JSON in this exact format:
+    {{
+      "chunks": [
+        {{
+          "headline": "Brief heading here",
+          "summary": "Few sentences summarizing this chunk",
+          "original_text": "Exact original text from document"
+        }}
+      ]
+    }}
